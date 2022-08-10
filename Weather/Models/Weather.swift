@@ -10,7 +10,7 @@ import Foundation
 struct Weather: Codable, Identifiable {
     var currentDate: Int
     var temperature: Double
-    var feelLikeTemperature: Double
+    var feelsLikeTemperature: Double
     var pressure: Int
     var humidity: Int
     var dewPoint: Double
@@ -22,7 +22,7 @@ struct Weather: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case currentDate = "dt"
         case temperature = "temp"
-        case feelLikeTemperature = "feel_like"
+        case feelsLikeTemperature = "feels_like"
         case pressure
         case humidity
         case dewPoint = "dew_point"
@@ -35,7 +35,7 @@ struct Weather: Codable, Identifiable {
     init() {
         currentDate = 0
         temperature = 0.0
-        feelLikeTemperature = 0.0
+        feelsLikeTemperature = 0.0
         pressure = 0
         humidity = 0
         dewPoint = 0.0

@@ -8,9 +8,9 @@
 import Foundation
 
 extension API {
-    static let baseURLString = "http://api.openweather.org/data/2.5/"
+    static let baseURLString = "https://api.openweathermap.org/data/2.5/"
     
     static func getURLFor(latitude: Double, longitude: Double) -> String {
-        return "\(baseURLString)oncall?lat=\(latitude)&lon=\(longitude)&exclude=minutely&appid=\(key)&units=imperial"
+        return "\(baseURLString)onecall?lat=\(latitude)&lon=\(longitude)&exclude=minutely&appid=\(key)&units=metric"
     }
 }

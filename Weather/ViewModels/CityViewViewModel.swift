@@ -7,10 +7,11 @@
 
 import SwiftUI
 import CoreLocation
+import Foundation
 
-final class CityViewViewModel: ObservableObject {
+final class CityViewViewModel: NSObject, ObservableObject {
     @Published var weather = WeatherResponse.empty()
-    @Published var city: String = "Minsk" {
+    @Published var city: String = "Paris" {
         didSet {
             getLocation()
         }
@@ -34,12 +35,8 @@ final class CityViewViewModel: ObservableObject {
         return formatter
     }()
     
-    init() {
-        getLocation()
-    }
-    
     var date: String {
-        return dayFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(weather.current.currentDate)))
+        return dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(weather.current.currentDate)))
     }
     
     var weatherIcon: String {
@@ -72,6 +69,11 @@ final class CityViewViewModel: ObservableObject {
         return String(format: "%0.0f%%", weather.current.dewPoint)
     }
     
+    override init() {
+        super.init()
+        getLocation()
+    }
+    
     func getTemperatureFor(temperature: Double) -> String {
         return String(format: "%0.1f", temperature)
     }
@@ -93,7 +95,7 @@ final class CityViewViewModel: ObservableObject {
         }
     }
     
-    private func getWeather(coordinates: CLLocationCoordinate2D?) {
+    func getWeather(coordinates: CLLocationCoordinate2D?) {
         if let coordinates = coordinates {
             let urlString = API.getURLFor(latitude: coordinates.latitude, longitude: coordinates.longitude)
             getWeatherInternal(city: city, urlString: urlString)
