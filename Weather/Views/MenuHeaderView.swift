@@ -37,6 +37,24 @@ struct MenuHeaderView: View {
             }
             .frame(width: 40, height: 40)
             .padding(10)
+            
+            Button {
+                cityViewModel.searchCurrentLocation()
+                if let location = cityViewModel.currentLocation?.name {
+                    cityViewModel.city = location
+                    searchTerm = cityViewModel.city
+                }
+                
+                    
+            } label: {
+                ZStack {
+                    Circle().fill(Color.cyan)
+                    Image(systemName: "paperplane.circle.fill")
+                        .foregroundColor(.white)
+                }
+            }
+            .frame(width: 40, height: 40)
+            .padding(10)
         }
         .foregroundColor(.white)
         .background(Color.black.opacity(0.3))

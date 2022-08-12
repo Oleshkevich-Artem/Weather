@@ -21,7 +21,7 @@ struct WelcomeView: View {
                         .bold().font(.title)
                         .foregroundColor(.black)
                 
-                    Text("Please select the weather search option")
+                    Text("Let's go to search weather for your city!")
                         .padding()
                         .foregroundColor(.black)
                 }
@@ -29,19 +29,6 @@ struct WelcomeView: View {
                 .padding()
                 
                 VStack(spacing: 30) {
-                NavigationLink(destination: ShareLocationView(), label: {
-                    HStack {
-                        Image(systemName: "paperplane.fill")
-                            .foregroundColor(.black)
-                        Text("Current location")
-                            .bold()
-                    }
-                })
-                .frame(width: 180)
-                .padding()
-                .background(Color.cyan)
-                .foregroundColor(.white)
-                .cornerRadius(30)
                 
                 NavigationLink(destination: SearchCityView(), label: {
                     HStack {

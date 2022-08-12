@@ -9,13 +9,20 @@ import SwiftUI
 import CoreLocation
 import Foundation
 
-final class CityViewViewModel: NSObject, ObservableObject {
+final class CityViewViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+    @Published var currentLocation: CurrentPlace?
+    
     @Published var weather = WeatherResponse.empty()
+    
     @Published var city: String = "Paris" {
         didSet {
             getLocation()
         }
     }
+    
+    @Published var isLoaded = true
+    
+    private var locationManager = LocationManager()
     
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -95,24 +102,74 @@ final class CityViewViewModel: NSObject, ObservableObject {
         }
     }
     
-    func getWeather(coordinates: CLLocationCoordinate2D?) {
+    private func getWeather(coordinates: CLLocationCoordinate2D?) {
         if let coordinates = coordinates {
             let urlString = API.getURLFor(latitude: coordinates.latitude, longitude: coordinates.longitude)
-            getWeatherInternal(city: city, urlString: urlString)
+            getWeatherInternal(urlString: urlString)
         }
         else {
             let urlString = API.getURLFor(latitude: 37.5485, longitude: -121.9886)
-            getWeatherInternal(city: city, urlString: urlString)
+            getWeatherInternal(urlString: urlString)
         }
         
     }
     
-    private func getWeatherInternal(city: String, urlString: String) {
+    private func getWeatherInternal(urlString: String) {
         NetworkManager<WeatherResponse>.fetch(for: URL(string: urlString)!) { (result) in
             switch result {
             case .success(let responce):
                 DispatchQueue.main.async {
                     self.weather = responce
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func searchCurrentLocation() {
+        if locationManager.manager.authorizationStatus == .authorizedAlways || locationManager.manager.authorizationStatus == .authorizedWhenInUse {
+            requestLocation()
+            
+            return
+        }
+        
+        requestPermission()
+    }
+    
+    private func requestPermission() {
+        locationManager.manager.requestWhenInUseAuthorization()
+    }
+    
+    private func requestLocation() {
+        locationManager.manager.requestLocation()
+        
+        if let location = locationManager.location {
+            getCurrentLocationName(coordinates: location)
+        }
+    }
+    
+    private func getCurrentLocationName(coordinates: CLLocationCoordinate2D?) {
+        if let coordinates = coordinates {
+            let urlString = API.getURLForCurrentPlace(latitude: coordinates.latitude, longitude: coordinates.longitude)
+            getCurrentPlaceNameInternal(urlString: urlString)
+        }
+        else {
+            let urlString = API.getURLForCurrentPlace(latitude: 0, longitude: 0)
+            getCurrentPlaceNameInternal(urlString: urlString)
+        }
+        
+    }
+    
+    private func getCurrentPlaceNameInternal(urlString: String) {
+        NetworkManager<CurrentPlace>.fetch(for: URL(string: urlString)!) { (result) in
+            switch result {
+            case .success(let responce):
+                DispatchQueue.main.async {
+                    self.currentLocation = responce
+                    if let currentLocation = self.currentLocation?.name {
+                        self.city = currentLocation
+                    }
                 }
             case .failure(let error):
                 print(error)

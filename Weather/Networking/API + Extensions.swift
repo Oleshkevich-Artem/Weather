@@ -13,4 +13,8 @@ extension API {
     static func getURLFor(latitude: Double, longitude: Double) -> String {
         return "\(baseURLString)onecall?lat=\(latitude)&lon=\(longitude)&exclude=minutely&appid=\(key)&units=metric"
     }
+    
+    static func getURLForCurrentPlace(latitude: Double, longitude: Double) -> String {
+        return "\(baseURLString)weather?lat=\(latitude)&lon=\(longitude)&appid=\(key)&units=metric"
+    }
 }
