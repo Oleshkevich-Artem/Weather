@@ -13,6 +13,12 @@ struct MenuHeaderView: View {
     
     @State private var searchTerm = "Paris"
     
+    func delay(delay: Double, closure: @escaping () -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+             closure()
+        }
+    }
+    
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
@@ -40,21 +46,19 @@ struct MenuHeaderView: View {
             
             Button {
                 cityViewModel.searchCurrentLocation()
-                if let location = cityViewModel.currentLocation?.name {
-                    cityViewModel.city = location
+                delay(delay: 0.5) {
                     searchTerm = cityViewModel.city
                 }
                 
-                    
             } label: {
                 ZStack {
-                    Circle().fill(Color.cyan)
-                    Image(systemName: "paperplane.circle.fill")
+                    Circle().fill(Color.blue)
+                    Image(systemName: "paperplane.fill")
                         .foregroundColor(.white)
                 }
             }
             .frame(width: 40, height: 40)
-            .padding(10)
+            .padding(.trailing, 10)
         }
         .foregroundColor(.white)
         .background(Color.black.opacity(0.3))

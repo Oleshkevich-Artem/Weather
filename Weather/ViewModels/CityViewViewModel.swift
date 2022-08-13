@@ -9,7 +9,7 @@ import SwiftUI
 import CoreLocation
 import Foundation
 
-final class CityViewViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+final class CityViewViewModel: NSObject, ObservableObject {
     @Published var currentLocation: CurrentPlace?
     
     @Published var weather = WeatherResponse.empty()
@@ -19,8 +19,6 @@ final class CityViewViewModel: NSObject, ObservableObject, CLLocationManagerDele
             getLocation()
         }
     }
-    
-    @Published var isLoaded = true
     
     private var locationManager = LocationManager()
     
@@ -108,8 +106,9 @@ final class CityViewViewModel: NSObject, ObservableObject, CLLocationManagerDele
             getWeatherInternal(urlString: urlString)
         }
         else {
-            let urlString = API.getURLFor(latitude: 37.5485, longitude: -121.9886)
+            let urlString = API.getURLFor(latitude: 53.9, longitude: -27.5667)
             getWeatherInternal(urlString: urlString)
+            self.city = "Minsk"
         }
         
     }
@@ -129,12 +128,16 @@ final class CityViewViewModel: NSObject, ObservableObject, CLLocationManagerDele
     
     func searchCurrentLocation() {
         if locationManager.manager.authorizationStatus == .authorizedAlways || locationManager.manager.authorizationStatus == .authorizedWhenInUse {
-            requestLocation()
-            
-            return
+            if locationManager.manager.location?.coordinate != nil {
+                getCurrentLocationName(coordinates: locationManager.manager.location?.coordinate)
+            }
+            else {
+                requestLocation()
+            }
         }
-        
-        requestPermission()
+        else {
+            requestPermission()
+        }
     }
     
     private func requestPermission() {
@@ -167,13 +170,18 @@ final class CityViewViewModel: NSObject, ObservableObject, CLLocationManagerDele
             case .success(let responce):
                 DispatchQueue.main.async {
                     self.currentLocation = responce
-                    if let currentLocation = self.currentLocation?.name {
-                        self.city = currentLocation
-                    }
+                    self.getWeatherForCurrentLocation()
                 }
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    func getWeatherForCurrentLocation() {
+        if let currentLocation = currentLocation?.name {
+            self.city = currentLocation
+            getLocation()
         }
     }
     

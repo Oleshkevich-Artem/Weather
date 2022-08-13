@@ -21,4 +21,3 @@ struct SearchCityView: View {
         .padding(.top, 5)
     }
 }
-
