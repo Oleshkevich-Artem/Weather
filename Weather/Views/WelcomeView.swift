@@ -31,19 +31,24 @@ struct WelcomeView: View {
                 VStack(spacing: 30) {
                 
                 NavigationLink(destination: SearchCityView(), label: {
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.black)
-                        Text("Search by city")
+                    ZStack {
+                        Circle().fill(Color.blue).frame(width: 120)
+                        VStack {
+            
+                        Text("SEARCH")
                             .bold()
+                            .font(.title)
+                            
+                        Image(systemName: "magnifyingglass")
+                        }
+                        .padding(.top, 10)
                     }
                 })
-                .frame(width: 180)
-                .padding()
-                .background(Color.cyan)
                 .foregroundColor(.white)
-                .cornerRadius(30)
                 }
+                .padding(3)
+                .background(Circle().fill(Color.cyan))
+                               
                 Spacer()
                 
                 Text("Created and Directed by")
