@@ -1,0 +1,56 @@
+/* 
+  Localizable.strings
+  Weather
+
+  Created by Oleshkevich Artem on 7.09.22.
+  
+*/
+"Today" = "Today";
+"Temperature unit" = "°C";
+"Wind speed unit" = "mp/h";
+"Welcome!" = "Welcome!";
+"Let's go to search weather for your city!" = "Let's go to search weather for your city!";
+"SEARCH" = "SEARCH";
+"Created and Directed by" = "Created and Directed by";
+"Artem Oleshkevich" = "Artem Oleshkevich";
+"Hourly weather" = "Hourly weather";
+"Daily weather" = "Daily weather";
+"01 AM" = "01 AM";
+"02 AM" = "02 AM";
+"03 AM" = "03 AM";
+"04 AM" = "04 AM";
+"05 AM" = "05 AM";
+"06 AM" = "06 AM";
+"07 AM" = "07 AM";
+"08 AM" = "08 AM";
+"09 AM" = "09 AM";
+"10 AM" = "10 AM";
+"11 AM" = "11 AM";
+"12 AM" = "12 AM";
+"01 PM" = "01 PM";
+"02 PM" = "02 PM";
+"03 PM" = "03 PM";
+"04 PM" = "04 PM";
+"05 PM" = "05 PM";
+"06 PM" = "06 PM";
+"07 PM" = "07 PM";
+"08 PM" = "08 PM";
+"09 PM" = "09 PM";
+"10 PM" = "10 PM";
+"11 PM" = "11 PM";
+"12 PM" = "12 PM";
+"Thunderstorm" = "Thunderstorm";
+"Drizzle" = "Drizzle";
+"Rain" = "Rain";
+"Snow" = "Snow";
+"Mist" = "Mist";
+"Smoke" = "Smoke";
+"Haze" = "Haze";
+"Dust" = "Dust";
+"Fog" = "Fog";
+"Sand" = "Sand";
+"Ash" = "Ash";
+"Squall" = "Squall";
+"Tornado" = "Tornado";
+"Clouds" = "Clouds";
+"Clear" = "Clear";

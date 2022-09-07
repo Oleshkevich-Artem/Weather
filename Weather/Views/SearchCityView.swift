@@ -13,8 +13,13 @@ struct SearchCityView: View {
     var body: some View {
         VStack {
             MenuHeaderView(cityViewModel: cityViewModel)
-            ScrollView(showsIndicators: false) {
-                CityView(cityViewModel: cityViewModel)
+            if cityViewModel.loading {
+                LoadingView()
+            }
+            else {
+                ScrollView(showsIndicators: false) {
+                    CityView(cityViewModel: cityViewModel)
+                }
             }
         }
         .background(Image("clouds"))

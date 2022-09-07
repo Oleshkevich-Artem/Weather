@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0419C03128C92D9C008985E1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0419C03328C92D9C008985E1 /* Localizable.strings */; };
 		0454D72828A46D6200E1EB79 /* CurrentPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454D72728A46D6200E1EB79 /* CurrentPlace.swift */; };
 		048183212889ED700010BE73 /* WeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048183202889ED700010BE73 /* WeatherApp.swift */; };
 		048183232889ED700010BE73 /* SearchCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048183222889ED700010BE73 /* SearchCityView.swift */; };
@@ -57,6 +58,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0419C03228C92D9C008985E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0419C03628C92EB3008985E1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0454D72728A46D6200E1EB79 /* CurrentPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlace.swift; sourceTree = "<group>"; };
 		0481831D2889ED700010BE73 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048183202889ED700010BE73 /* WeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp.swift; sourceTree = "<group>"; };
@@ -119,6 +122,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0419C02828C92C23008985E1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0419C02928C92C4A008985E1 /* Localization */,
+				04B9F7D0288F3FB600D64D73 /* LottieAnimations */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0419C02928C92C4A008985E1 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				0419C03328C92D9C008985E1 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		0454D72528A46C2500E1EB79 /* CitySearchModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +178,7 @@
 		0481831F2889ED700010BE73 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				04B9F7D0288F3FB600D64D73 /* LottieAnimations */,
+				0419C02828C92C23008985E1 /* Resources */,
 				04B9F7CF288F3F8900D64D73 /* ViewModels */,
 				04B9F7CE288F3F7800D64D73 /* Views */,
 				04B9F7CD288F3F6A00D64D73 /* Models */,
@@ -212,7 +232,7 @@
 				04B9F818289005E300D64D73 /* CityView.swift */,
 				048183222889ED700010BE73 /* SearchCityView.swift */,
 				04E1F49E289D43D700BAD7A8 /* WelcomeView.swift */,
-				04E1F4A2289D490D00BAD7A8 /* Test */,
+				04E1F4A0289D477F00BAD7A8 /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -251,14 +271,6 @@
 				04B9F7F5288F6EFA00D64D73 /* nightThunderstorm.json */,
 			);
 			path = LottieAnimations;
-			sourceTree = "<group>";
-		};
-		04E1F4A2289D490D00BAD7A8 /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				04E1F4A0289D477F00BAD7A8 /* LoadingView.swift */,
-			);
-			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +318,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 048183142889ED700010BE73;
 			packageReferences = (
@@ -335,6 +348,7 @@
 				04B9F7FC288F6EFA00D64D73 /* dayBrokenClouds.json in Resources */,
 				04B9F806288F6EFA00D64D73 /* nightRain.json in Resources */,
 				04B9F7FD288F6EFA00D64D73 /* dayMist.json in Resources */,
+				0419C03128C92D9C008985E1 /* Localizable.strings in Resources */,
 				04B9F802288F6EFA00D64D73 /* dayRain.json in Resources */,
 				04B9F808288F6EFA00D64D73 /* nightSnow.json in Resources */,
 				04E1F4A8289D705500BAD7A8 /* loadingAnimation.json in Resources */,
@@ -386,11 +400,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		0419C03328C92D9C008985E1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0419C03228C92D9C008985E1 /* en */,
+				0419C03628C92EB3008985E1 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		048183292889ED730010BE73 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -451,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

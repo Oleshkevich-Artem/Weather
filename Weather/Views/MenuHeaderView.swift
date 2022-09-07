@@ -23,10 +23,10 @@ struct MenuHeaderView: View {
         HStack {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.white)
-                .padding(10)
+                .padding()
             
             TextField("Paris", text: $searchTerm)
-                .padding(10)
+                .padding()
                 .font(.system(.headline))
                 .background(Color.white)
                 .foregroundColor(.black)

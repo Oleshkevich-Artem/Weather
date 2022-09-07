@@ -15,7 +15,7 @@ struct CityView: View {
         VStack {
             CityNameView(city: cityViewModel.city, date: cityViewModel.date)
             TodayWeatherView(cityViewModel: cityViewModel)
-                .padding(.horizontal, 10)
+                .padding(.horizontal)
             HourlyWeatherView(cityViewModel: cityViewModel)
             DailyWeatherView(cityViewModel: cityViewModel)
         }

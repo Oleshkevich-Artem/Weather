@@ -17,11 +17,11 @@ struct WelcomeView: View {
                     .navigationBarTitleDisplayMode(.inline)
                 
                 VStack(spacing: 20) {
-                    Text("Welcome!")
+                    Text(NSLocalizedString("Welcome!", comment: ""))
                         .bold().font(.title)
                         .foregroundColor(.black)
                 
-                    Text("Let's go to search weather for your city!")
+                    Text(NSLocalizedString("Let's go to search weather for your city!", comment: ""))
                         .padding()
                         .foregroundColor(.black)
                 }
@@ -35,13 +35,11 @@ struct WelcomeView: View {
                         Circle().fill(Color.blue).frame(width: 120)
                         VStack {
             
-                        Text("SEARCH")
+                        Text(NSLocalizedString("SEARCH", comment: ""))
                             .bold()
                             .font(.title)
-                            
-                        Image(systemName: "magnifyingglass")
                         }
-                        .padding(.top, 10)
+                        .padding()
                     }
                 })
                 .foregroundColor(.white)
@@ -51,10 +49,10 @@ struct WelcomeView: View {
                                
                 Spacer()
                 
-                Text("Created and Directed by")
+                Text(NSLocalizedString("Created and Directed by", comment: ""))
                     .font(.footnote)
                     .foregroundColor(.black)
-                Text("Artem Oleshkevich")
+                Text(NSLocalizedString("Artem Oleshkevich", comment: ""))
                     .bold()
                     .foregroundColor(.black)
             }

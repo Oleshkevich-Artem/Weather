@@ -19,6 +19,7 @@ final class CityViewViewModel: NSObject, ObservableObject {
             getLocation()
         }
     }
+    @Published var loading = false
     
     private var locationManager = LocationManager()
     
@@ -96,6 +97,7 @@ final class CityViewViewModel: NSObject, ObservableObject {
             if let places = placemarks,
                let place = places.first {
                 self.getWeather(coordinates: place.location?.coordinate)
+                self.loading = true
             }
         }
     }
@@ -119,6 +121,7 @@ final class CityViewViewModel: NSObject, ObservableObject {
             case .success(let responce):
                 DispatchQueue.main.async {
                     self.weather = responce
+                    self.loading = false
                 }
             case .failure(let error):
                 print(error)

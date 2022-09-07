@@ -12,7 +12,7 @@ struct DailyWeatherView: View {
     
     var body: some View {
         VStack {
-            Text("Daily weather")
+            Text(NSLocalizedString("Daily weather", comment: ""))
                 .bold().font(.title)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.white.opacity(0.4))
@@ -23,7 +23,7 @@ struct DailyWeatherView: View {
                     getDailyCell(weather: weather)
                 }
             }
-            .padding(.leading, 10)
+            .padding(.leading)
         }
     }
     

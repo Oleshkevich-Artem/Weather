@@ -9,9 +9,10 @@ import SwiftUI
 
 struct TodayWeatherView: View {
     @ObservedObject var cityViewModel: CityViewViewModel
+    
     var body: some View {
         VStack(spacing: 10) {
-            Text("Today")
+            Text(NSLocalizedString("Today", comment: ""))
                 .font(.largeTitle)
                 .bold()
             
@@ -22,13 +23,13 @@ struct TodayWeatherView: View {
                 VStack(alignment: .leading) {
                     Text("\(cityViewModel.temperature)℃")
                         .font(.system(size: 42))
-                    Text(cityViewModel.conditions)
+                    Text(NSLocalizedString(cityViewModel.conditions, comment: ""))
                 }
             }
         
             HStack {
                 Spacer()
-                widgetView(image: "wind", color: .gray, title: "\(cityViewModel.windSpeed) mi/hr")
+                widgetView(image: "wind", color: .gray, title: "\(cityViewModel.windSpeed)" + NSLocalizedString("Wind speed unit", comment: ""))
                 Spacer()
                 widgetView(image: "drop.fill", color: .cyan, title: "\(cityViewModel.humidity)")
                 Spacer()

@@ -12,7 +12,7 @@ final class NetworkManager<T: Codable> {
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil else {
                 print(String(describing: error!))
-                complition(.failure(.error(err: error!.localizedDescription)))
+                complition(.failure(.error(description: error!.localizedDescription)))
                 return
             }
             
@@ -27,12 +27,12 @@ final class NetworkManager<T: Codable> {
             }
             
             do {
-                let json = try JSONDecoder().decode(T.self, from: data)
-                complition(.success(json))
+                let decodedObject = try JSONDecoder().decode(T.self, from: data)
+                complition(.success(decodedObject))
             }
-            catch let err {
-                print(String(describing: err))
-                complition(.failure(.decodingError(err: err.localizedDescription)))
+            catch let error {
+                print(String(describing: error))
+                complition(.failure(.decodingError(err: error.localizedDescription)))
             }
             
         }.resume()
@@ -42,7 +42,7 @@ final class NetworkManager<T: Codable> {
 enum NetworkError: Error {
     case invalidResponse
     case invalidData
-    case error(err: String)
+    case error(description: String)
     case decodingError(err: String)
     
 }

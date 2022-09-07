@@ -12,7 +12,7 @@ struct HourlyWeatherView: View {
     
     var body: some View {
         VStack {
-            Text("Hourly weather")
+            Text(NSLocalizedString("Hourly weather", comment: ""))
                 .bold().font(.title)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -34,7 +34,7 @@ struct HourlyWeatherView: View {
     
     private func getHourlyView(hour: String, image: Image, temperature: String) -> some View {
         VStack(spacing: 5) {
-            Text(hour)
+            Text(NSLocalizedString(hour, comment: ""))
                 .font(.system(.headline))
             image
                 .foregroundColor(.yellow)
