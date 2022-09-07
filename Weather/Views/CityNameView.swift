@@ -18,9 +18,11 @@ struct CityNameView: View {
                     .font(.system(.largeTitle))
                     .bold()
                     .foregroundColor(.white)
+                    .shadow(color: .black, radius: 1)
                 
                 Text(date)
                     .foregroundColor(.white)
+                    .shadow(color: .black, radius: 1)
             }
             .font(.system(.headline))
         }

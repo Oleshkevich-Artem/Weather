@@ -14,9 +14,11 @@ struct DailyWeatherView: View {
         VStack {
             Text(NSLocalizedString("Daily weather", comment: ""))
                 .bold().font(.title)
+                .shadow(color: .black, radius: 1)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.white.opacity(0.4))
                 .foregroundColor(.white)
+             
             
             ForEach(cityViewModel.weather.daily) { weather in
                 LazyVStack {
@@ -24,6 +26,7 @@ struct DailyWeatherView: View {
                 }
             }
             .padding(.leading)
+            .padding(.trailing)
         }
     }
     

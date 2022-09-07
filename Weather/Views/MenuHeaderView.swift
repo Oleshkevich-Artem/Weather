@@ -42,7 +42,7 @@ struct MenuHeaderView: View {
                 }
             }
             .frame(width: 40, height: 40)
-            .padding(10)
+            .padding()
             
             Button {
                 cityViewModel.searchCurrentLocation()
@@ -52,13 +52,14 @@ struct MenuHeaderView: View {
                 
             } label: {
                 ZStack {
-                    Circle().fill(Color.blue)
+                    Circle().fill(Color.black)
                     Image(systemName: "paperplane.fill")
                         .foregroundColor(.white)
                 }
             }
             .frame(width: 40, height: 40)
-            .padding(.trailing, 10)
+            .padding(.trailing)
+
         }
         .foregroundColor(.white)
         .background(Color.black.opacity(0.3))

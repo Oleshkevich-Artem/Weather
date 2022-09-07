@@ -15,9 +15,10 @@ struct HourlyWeatherView: View {
             Text(NSLocalizedString("Hourly weather", comment: ""))
                 .bold().font(.title)
                 .foregroundColor(.white)
+                .shadow(color: .black, radius: 1)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.white.opacity(0.4))
-            
+             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(cityViewModel.weather.hourly) { weather in

@@ -11,7 +11,7 @@ struct CurrentPlace: Codable {
     var name: String
     
     static func empty() -> CurrentPlace {
-        return CurrentPlace(name: "Kyiv")
+        return CurrentPlace(name: "Minsk")
     }
 }
 

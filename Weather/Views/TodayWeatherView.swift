@@ -15,6 +15,7 @@ struct TodayWeatherView: View {
             Text(NSLocalizedString("Today", comment: ""))
                 .font(.largeTitle)
                 .bold()
+                .shadow(color: .black, radius: 1)
             
             HStack(spacing: 20) {
                 LottieView(name: cityViewModel.getLottiesAnimationFor(icon: cityViewModel.weatherIcon))
@@ -23,7 +24,9 @@ struct TodayWeatherView: View {
                 VStack(alignment: .leading) {
                     Text("\(cityViewModel.temperature)℃")
                         .font(.system(size: 42))
+                        .shadow(color: .black, radius: 1)
                     Text(NSLocalizedString(cityViewModel.conditions, comment: ""))
+                        .shadow(color: .black, radius: 1)
                 }
             }
         
